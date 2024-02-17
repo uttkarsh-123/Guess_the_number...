@@ -1,0 +1,83 @@
+import random
+r_num = random.randint(1, 999999999999999999999999999999999999999999999999999999999999999999999999999999999999999)
+def int_to_list(num):
+    """This function accepts a number and converts all of its characters into a list format."""
+    num = str(num)
+    return list(num)
+d1 = {0: "Zero", 1: "One", 2: "Two", 3: "Three", 4: "Four", 5: "Five", 6: "Six", 7: "Seven", 8: "Eight", 9: "Nine",
+      10: "Ten",
+      11: "Eleven", 12: "Twelve", 13: "Thirteen", 14: "Fourteen", 15: "Fifteen", 16: "Sixteen", 17: "Seventeen",
+      18: "Eighteen", 19: "Nineteen"}
+dtens = {1: "ten", 2: "Twenty", 3: "Thirty", 4: "Fourty", 5: "Fifty", 6: "Sixty", 7: "Seventy", 8: "Eighty",
+         9: "Ninety"}
+def list_to_int(list1):
+    """Accepts a list {only with string values of simple integers}, and convert it into a single number."""
+    list2 = []
+    for item in list1:
+        list2.append(int(item))
+    x = 10 ** (len(list1) - 1)
+    num = 0
+    for item in list2:
+        num = num + item * x
+        x = x / 10
+    return int(num)
+def threeDigNumConv(userNum):
+    """Accepts a 3, 2 or 1-digit number and return the string of the number name."""
+    Listnum = int_to_list(userNum)
+    if len(Listnum) == 1:
+        return d1[list_to_int(Listnum)]
+    elif len(Listnum) == 2:
+        if Listnum[0] == "1":
+            return d1[list_to_int(Listnum)]
+        elif Listnum[0] != "1":
+            if Listnum[1] != "0":
+                return dtens[int(Listnum[0])] + " " + d1[int(Listnum[1])]
+            else:
+                return dtens[int(Listnum[0])]
+    elif len(Listnum) == 3:
+        if Listnum[1] == "0" and Listnum[2] != "0":
+            return d1[int(Listnum[0])] + " Hundred " + d1[int(Listnum[2])]
+        elif Listnum[1] == "0" and Listnum[2] == "0":
+            return d1[int(Listnum[0])] + " Hundred "
+        elif Listnum[0] == "0":
+            return dtens[int(Listnum[1])] + d1[int(Listnum[2])]
+        elif Listnum[1] == "1":
+            ListNum2 = Listnum[1:]
+            num = list_to_int(ListNum2)
+            return d1[int(Listnum[0])] + " Hundred " + d1[num]
+        else:
+            return d1[int(Listnum[0])] + " Hundred " + dtens[int(Listnum[1])] + " " + d1[int(Listnum[2])]
+nsystem = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion", "Pentillion", "Sextillion", "Heptillion"
+    , "Octillion", "Nonillion", "Decillion", "Undecillion", "Duodecillion", "Tridecillion", "Quaddecillion"
+    ,"Pentdecillion","Sexdecillion", "Septdecillion", "Octdecillion", "Nondecillion", "Vingitillion",
+    "Unvingitillion", "Duovingitllion", "Trivingitillion", "Quadvingitillion", "Pentvingitillion",
+    "Sexvingitillion", "Septvingitillion", "Octvingitillion", "Nonvingitillion"]
+print("ENTER \'r\' to generate a random number.")
+number = input("Enter a number to generate its number name : {Upper limit - 87 digit number} :\t\t")
+try:
+    d = int(number)
+except:
+    if number == "r" or number == "R":
+        number = r_num
+    else:
+        print("Enter a valid input!")
+        exit()
+l1 = int_to_list(number)
+l1.reverse()
+l2 = []
+for i in range(0, len(l1), 3):
+    temp = l1[i:i + 3]
+    temp.reverse()
+    l2.append(temp)
+l2.reverse()
+x = len(l2) - 1
+# print(l2)
+print(number, end=" => ")
+for i in l2:
+    numberSegment = list_to_int(i)
+    try:
+        print(threeDigNumConv(numberSegment), nsystem[x], end=" ")
+    except:
+        print("Number too large!")
+        break
+    x -= 1
