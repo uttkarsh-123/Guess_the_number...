@@ -1,0 +1,22 @@
+print("This program checks if the triangle is right angled or not.")
+s1 = int(input("Enter first side : "))
+s2 = int(input("Enter second side : "))
+s3 = int(input("Enter third side : "))
+sides = [s1,s2,s3]
+for item in sides:
+    if item == s1:
+        if s1**2 == (s2**2) + (s3**2):
+            print("Yes, it's a right angled triangle!")
+            break
+        else:
+            continue
+    elif item == s2:
+        if s2**2 == (s1**2) + (s2**2):
+            print("Yes, its a right angled triangle!")
+        else:
+            continue
+    elif item == s3:
+        if s3**2 == (s1**2) + (s2**2):
+            print("Yes, its a right angled triangle!")
+        else :
+            print("No, its not a right angled triangle!")
