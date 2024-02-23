@@ -1,0 +1,54 @@
+#information
+
+print("WELCOME TO KBC!")
+prize = [1000, 2000, 5000, 10000, 50000, 100000, 320000, 640000, 1250000, 2500000, 5000000, 10000000, 70000000]
+questions = ["What is the capital on India?",
+             "Who is the president of India?",
+             "Which is the largest mammal in the world?",
+             "What is the full form of JEE?",
+             "How many continents are there in the world?",
+             "Which of the following is not a programming language?",
+             "Which is the Indian state with the largest forest area?",
+             "Which is the country with largest number of lakes?",
+             "Who gave the famous theory of relativity?",
+             "Who wrote the book \'THE ORIGIN OF SPECIES'\'?",
+             "Which element has atomic number 80 in the periodic table?",
+             "Which of the following is an animal that may live without water for it's entire life?",
+             "Which of the following plant has a common link as a mode of nutrition with a frog?"]
+options = [{"A": "Hyderabad", "B": "Mumbai", "C": "Surat", "D": "Delhi"},
+           {"A": "Narendra modi", "B": "Draupadi Murmu", "C": "Rahul Gandhi", "D": "Dr. APJ Abdul Kalam"},
+           {"A": "African Elephant", "B": "Blue whale", "C": "Polar Bear", "D": "Asian Elephant"},
+           {"A": "Junior Entrance Examination", "B": "Joint Engineering Examination", "C": "Joint Entrance Examination",
+            "D":
+                "Junior Engineering Examination"},
+           {"A": "4", "B": "7", "C": "9", "D": "8"},
+           {"A": "Javascript", "B": "Chat-GPT", "C": "Python", "D": "C++"},
+           {"A": "Maharashtra", "B": "Chhattisgarh", "C": "Assam", "D": "Madhya Pradesh"},
+           {"A": "Finland", "B": "Canada", "C": "Netherland", "D": "Switzerland"},
+           {"A": "Stephen Hawking", "B": "Marie Curie", "C": "Albert Einstein", "D": "Satyendranath Bose"},
+           {"A": "Charles Darwin", "B": "Aristotle", "C": "Stephen Hawking", "D": "Mendel"},
+           {"A": "Palladium", "B": "Mercury", "C": "Gallium", "D": "Bismuth"},
+           {"A": "Camel", "B": "Kangaroo", "C": "Kangaroo Rat", "D": "Capybara"},
+           {"A": "Venus Flytrap", "B": "Bryophyllum", "C": "Peepal tree", "D": "Pea Plant"}]
+correctAnswers = ["D", "B", "B", "C", "B", "B", "D", "B", "C", "A", "B", "C", "A"]
+
+#Actual Logic
+
+qnum = 1
+while qnum <= 13:
+    print(f"{qnum}.{questions[qnum - 1]}")
+    for abcd in options[qnum - 1]:
+        print(f"{abcd}. {(options[qnum - 1])[abcd]}")
+    userAnswer = input("Enter the option A,B,C or D : ").capitalize()
+    if userAnswer == correctAnswers[qnum - 1]:
+        print(f"\nCorrect answer, You've won Rs.{prize[qnum - 1]}\n")
+    else:
+        if prize[qnum - 2] > 60000000:
+            print("You got your answer wrong, so didn't win any money!")
+        else:
+            print(f"Sorry, the correct answer was {correctAnswers[qnum - 1]}, but still you won Rs. {prize[qnum - 2]}")
+        exit()
+
+    qnum += 1
+else:
+    print("You've correctly answered all the questions, and won the game!!!!!!")
