@@ -1,0 +1,6 @@
+
+numberOrYear = int(input("Enter the number of participants/year  {Year shall be the year of exam}: \t"))
+if numberOrYear > 1901 and numberOrYear< 2099:
+    print(f"Sorry, we dont have data for the year {numberOrYear}")
+rank = int(input("ENTER YOUR RANK : "))
+print(f"Your percentile = {100-((rank/numberOrYear)*100)}")
