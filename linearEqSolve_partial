@@ -1,0 +1,39 @@
+def lcm(num1,num2):
+    '''Takes two numbers as input and returns the LCM...'''
+    if num1>num2:
+        greater = num1
+        smaller = num2
+    elif num1 == num2:
+        return num1
+    else:
+        greater = num2
+        smaller = num1
+    x=1
+    while greater%smaller!=0:
+        greater = greater*x
+        x+=1
+    return greater
+print("The equations shall be in the form :: \nax+by=c, where and b are constant values, and x and y are variables.")
+a1 = int(input("Enter the coefficient of x in the first equation :\t"))
+b1 = int(input("Enter the coefficient of y in the first equation :\t"))
+c1 = int(input("Enter the constant term in the first equation :\t"))
+a2 = int(input("Enter the coefficient of x in the second equation :\t"))
+b2 = int(input("Enter the coefficient of y in the second equation :\t"))
+c2 = int(input("Enter the constant term in the second equation :\t"))
+if a1 == 0 or a2  == 0 or b1 == 0 or b2 == 0:
+    print("The equations are not a linear equations in two variables.")
+elif c1 == 0 and c2 == 0 and a1/a2 == b1/b2:
+    print("The given equations have infinitely many solutions.")
+elif (c1 == 0 and c2 !=0 and a1/a2 == b1/b2) or (c2 == 0 and c1!=0 and a1/a2 == b1/b2):
+    print("The given equations have no solutions.")
+elif c1!=0 and c2!=0 and a1/a2 == b1/b2 == c1/c2:
+    print("The given linear equations have infinitely many solutions.")
+elif a1/a2!=b1/b2:
+    if a1 == a2:
+        b3 = b1-b2
+        c3 = c1-c2
+        if c3%b3 == 0:
+            print(f"y={int(c3/b3)}")
+        else:
+            print(f"y={c3}/{b3}")
+
